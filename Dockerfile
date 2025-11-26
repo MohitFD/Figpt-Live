@@ -9,8 +9,8 @@ ENV PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True \
 WORKDIR /workspace
 
 # COPY PROJECT
-COPY . /workspace/fixgpt-live
-WORKDIR /workspace/fixgpt-live
+COPY . /workspace/Fixgpt-Live
+WORKDIR /workspace/Fixgpt-Live
 
 # INSTALL DEPENDENCIES
 RUN pip install --upgrade pip && \
