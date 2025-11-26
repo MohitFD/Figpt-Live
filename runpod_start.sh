@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-PROJECT_ROOT="/workspace/fixgpt-main"
+PROJECT_ROOT="/workspace/Fixgpt-Live"
 VENV_DIR="/workspace/venv"
 
 if [ ! -d "$VENV_DIR" ]; then
