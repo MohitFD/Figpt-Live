@@ -1,22 +1,23 @@
-# VALID BASE IMAGE (PyTorch 2.3 + CUDA 12.1 + Python 3.10)
-FROM runpod/pytorch:2.3.0-cu121
+# VALID RUNPOD PYTORCH BASE IMAGE (CUDA 12.4 + PyTorch 2.4 + Python 3.11)
+FROM runpod/pytorch:2.4.0-py3.11-cuda12.4.1-devel-ubuntu22.04
 
 ENV PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True \
     TRANSFORMERS_VERBOSITY=info \
     DEBIAN_FRONTEND=noninteractive
 
+# WORK DIRECTORY
 WORKDIR /workspace
 
-# Copy your entire project
-COPY . /workspace/fixgpt-main
-WORKDIR /workspace/fixgpt-main
+# COPY PROJECT
+COPY . /workspace/fixgpt-live
+WORKDIR /workspace/fixgpt-live
 
-# Install dependencies directly (NO NEED FOR VENV INSIDE CONTAINER)
+# INSTALL DEPENDENCIES
 RUN pip install --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
-# Django default port
+# EXPOSE DJANGO PORT
 EXPOSE 8000
 
-# Start script
+# START SCRIPT
 CMD ["/bin/bash", "runpod_start.sh"]
